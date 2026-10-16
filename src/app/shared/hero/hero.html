@@ -1,0 +1,54 @@
+<div class="main-banner">
+
+  @if (slides().length > 0) {
+
+    <div
+      class="item"
+      [style.background-image]="'url(' + slides()[currentSlide].image + ')'"
+    >
+
+      <div class="header-text">
+
+        <span class="category">
+          {{ slides()[currentSlide].titre }}
+        </span>
+
+        <h2>
+          {{ slides()[currentSlide].description }}
+        </h2>
+
+      </div>
+
+    </div>
+
+    <!-- Flèche gauche -->
+    <button
+      class="slide-arrow prev"
+      (click)="previousSlide()">
+      ❮
+    </button>
+
+    <!-- Flèche droite -->
+    <button
+      class="slide-arrow next"
+      (click)="nextSlide()">
+      ❯
+    </button>
+
+    <!-- Points -->
+    <div class="slide-dots">
+
+      @for (slide of slides(); track $index) {
+
+        <span
+          [class.active]="$index === currentSlide"
+          (click)="goToSlide($index)">
+        </span>
+
+      }
+
+    </div>
+
+  }
+
+</div>
